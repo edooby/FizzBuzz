@@ -4,16 +4,17 @@ Created on Oct 17, 2012
 @author: rosshe
 '''
 import unittest
-from FizzBuz import FizzBuz
+from FizzBuz import FizzBuzz
 
 
-class TestFizzBuz(unittest.TestCase):
+class TestFizzBuzz(unittest.TestCase):
     valuesForDefaultRule = [ ([1], [1]) , ([2], [2]) ]
     valuesForFizzRule = [ [3], [6]]
-    valuesForBuzRule = [[5], [10]]
+    valuesForBuzzRule = [[5], [10]]
+    valuesForFizzBuzzRule = [[15], [30]]
 
     def setUp(self):
-        self.fizzbuzz = FizzBuz()
+        self.fizzbuzz = FizzBuzz()
     
     def tearDown(self):
         pass
@@ -31,10 +32,16 @@ class TestFizzBuz(unittest.TestCase):
         for input_value in self.valuesForFizzRule:
             self.executeTestOfGetAnswer(expected_value, input_value)
     
-    def testGetAnswerforBuz(self):
-        expected_value = ['Buz']
+    def testGetAnswerforBuzz(self):
+        expected_value = ['Buzz']
 
-        for input_value in self.valuesForBuzRule:
+        for input_value in self.valuesForBuzzRule:
+            self.executeTestOfGetAnswer(expected_value, input_value)
+    
+    def testGetAnswerforFizzBuzz(self):
+        expected_value= ['FizzBuzz']
+        
+        for input_value in self.valuesForFizzBuzzRule:
             self.executeTestOfGetAnswer(expected_value, input_value)
     
     def testGetAnswerwithMultiValues(self):
