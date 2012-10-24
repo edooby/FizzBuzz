@@ -6,34 +6,30 @@ Created on Oct 17, 2012
 
 class FizzBuzz(object):
     
+    def __init__(self):
+        self.rules = [self.GetAnswerforFizzRule , self.GetAnswerforBuzzRule]
+        
+    def GetAnswerforBuzzRule(self, number):
+        answer = "" 
+        if number %5 == 0:
+            answer = 'Buzz'
+        return answer
     
-    def GetAnswerforBuzzRule(self): 
-        self.answer = 'Buzz'
-        return self.answer
-    
-    def GetAnswerforFizzRule(self): 
-        self.answer = 'Fizz'
-        return self.answer
-    
-    def GetAnswerforFizzBuzzRule(self): 
-        self.answer = 'FizzBuzz'
-        return self.answer
+    def GetAnswerforFizzRule(self, number): 
+        answer = "" 
+        if number %3 == 0:
+            answer = 'Fizz'
+        return answer
     
     def getanswer(self,numbers):
         list_to_return = []
-          
+        answer = None
+        
         for number in numbers:
-            answer = None
-            if number % 5 == 0:
-                answer = self.GetAnswerforBuzzRule()
-                
-            if number % 3 == 0:
-                answer = self.GetAnswerforFizzRule()
-            
-            if number % 5 == 0 and number % 3 == 0:
-                answer = self.GetAnswerforFizzBuzzRule()
-                
-            if answer == None:
+            answer = ""
+            for rule in self.rules:
+                answer += rule(number)
+            if answer == "":
                 answer = number              
                 
             list_to_return.append(answer)
